@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>武器库</title>
+    <style>
+        .container { width: 500px; margin: 0 auto; border: 2px solid #333; padding: 20px;text-align: center; }
+        .weapon-itea {margin: 10px 0;padding: 10px;border: 1px solid#ccc;text-align: left;}
+        button {margin: 5px;padding: 5px 15px;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>武器装备库</h1>
+        <div id="weapons"></div>
+        <button onclick="addweapon()">添加武器</button>
+    </div>
+
+    <script>
+        let weapons = ["191步枪: 口径5.8mm，重约3.5kg，有效射程800米"];
+
+        function showweapons() {
+            let html ="";
+            for (let i =0;i < weapons.length;i++){
+                html += "<div class='weapon-item'>" + (i+1) + "," + weapons[i] +"</div>";
+            }
+            document.getElementById('weapons').innerHTML = html;
+        }
+        function addweapon() {
+            let newweapon = prompt();
+            weapons.push(newweapon);
+            showweapons();
+        }
+
+        showweapons();
+    </script>
+</body>
+</html>
