@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>武器对象</title>
+    <style>
+        .container{width: 500px;margin: 0 auto;border: 2px solid#333;padding: 20px;text-align: center;}
+        .weapon-item{margin: 10px 0;padding: 10px;border: 1px solid#ccc;text-align: left;}
+        .important{color: red;font-weight: bold;}
+        button{margin: 5px;padding: 5px 10px;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>武器对象</h1>
+        <div id="weapons"></div>
+         <button onclick="addWeapon()">添加武器</button>
+    </div>
+
+    <script>
+        //武器库4.0
+        let weapons = [
+            {title:"191步枪",content:"口径5.8mm，重约3.5kg，有效射程800米",important:true},
+            {title:"东风17",content:"射程2500公里，10马赫滑翔突防。",important:false}
+        ];
+
+        function showWeapons(){
+            let html = "";
+            for (let i = 0;i < weapons.length;i++){
+                let n = weapons[i];
+                let cls = n.important ? "important" : "";
+                html += `<div class="weapon-item">`;
+                html += `<h3 class="$[cls]>${n.title}</h3>`;
+                html += `<p>${n.content}</p>`;
+                html += `<button onclick="toggleImportant(${i})">切换重要</button>`;
+                html += `</div>`;
+            }
+            document.getElementById('weapons').innerHTML = html;
+        }
+
+        function toggleImportant(index){
+            weapons[index].important = !weapons[index].important;
+            showWeapons();
+         }
+
+         function addWeapon(){
+            let weaponTitle=prompt("新武器的名字：");
+            let weaponContent = prompt("新武器的描述：");
+            weapons.push({title:weaponTitle,content:weaponContent,important:false});
+            showWeapons();
+         }
+
+         showWeapons();
+    </script>
+</body>
+</html>
